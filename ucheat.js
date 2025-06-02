@@ -36,12 +36,12 @@ function updateItem(item,visible,itonly,day,weekday,weekend) {
  	if (itonly == true || itonly == 1) {$('div.item.'+item+' .itonly').html('<h4 class="alert"><span>En ville seulement</span></h4>').show(); } else { $('div.item.'+item+' .itonly').hide() }
  	$('div.item.'+item+' .price').text('$'+day+' / jour');
  	if (weekday >= 10) weekday = weekday / 100 // Au cas où l'utilisateur aurait entré des centimes, convertir en dollars
- 	if (weekend >= 10) weekend = weekend / 100	// Cette approche suppose qu'aucun kilométrage n'est supérieur à 10 $/mile ou inférieur à 10 cents/mile
- 	if (weekday > 0 ) $('div.item.'+item+' .weekday').text('$'+weekday+'/mile (Dim-Jeu)');
- 	if (weekend > 0 ) $('div.item.'+item+' .weekend').text('$'+weekend+'/mile (Ven-Sam)');
+ 	if (weekend >= 10) weekend = weekend / 100	// Cette approche suppose qu'aucun kilométrage n'est supérieur à 10 $/km ou inférieur à 10 cents/km
+ 	if (weekday > 0 ) $('div.item.'+item+' .weekday').text('$'+weekday+'/km (Dim-Jeu)');
+ 	if (weekend > 0 ) $('div.item.'+item+' .weekend').text('$'+weekend+'/km (Ven-Sam)');
  		// Par défaut, afficher le format $x.xx, mais écraser si nous trouvons une meilleure façon. Ceci DEVRAIT être converti en un if/else, mais c'est suffisant pour l'instant.
-	if (weekday > 0 && weekday < 1) $('div.item.'+item+' .weekday').text((weekday + "").split(".")[1] + '¢/mile (Dim-Jeu)');
- 	if (weekend > 0 && weekend < 1) $('div.item.'+item+' .weekend').text((weekend + "").split(".")[1] + '¢/mile (Ven-Sam)');
+	if (weekday > 0 && weekday < 1) $('div.item.'+item+' .weekday').text((weekday + "").split(".")[1] + '¢/km (Dim-Jeu)');
+ 	if (weekend > 0 && weekend < 1) $('div.item.'+item+' .weekend').text((weekend + "").split(".")[1] + '¢/km (Ven-Sam)');
  		// Cette méthode convertit le jour de semaine/week-end en chaînes, les divise au niveau de la virgule et affiche la deuxième partie du tableau (ce qui se trouve à droite de la virgule). Idéalement, nous vérifierions les entrées invalides, mais cela fera l'affaire.
  }
 
